@@ -34,6 +34,9 @@ public class Forecast {
     @JsonField(path = "/weather/0/description")
     private String weatherDescription;
 
+    @JsonField(path = "/weather/0/icon")
+    private String icon;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -150,5 +153,13 @@ public class Forecast {
 
     public void setWeatherDescription(String weatherDescription) {
         this.weatherDescription = weatherDescription;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

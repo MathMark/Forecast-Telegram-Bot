@@ -11,12 +11,14 @@ public class PresenterImpl implements Presenter {
 
         return "Country: " + forecast.getCountry() + "\n" +
                 "City: " + forecast.getCityName() + "\n" +
+                "Weather: " + forecast.getWeatherDescription() + "\n" +
                 "Temperature: " + converter.convertTemperature(forecast.getTemperature()) + "C" + "\n" +
                 "Min temperature: " + converter.convertTemperature(forecast.getMinTemp()) + "C" + "\n" +
                 "Max temperature: " + converter.convertTemperature(forecast.getMaxTemp()) + "C" + "\n" +
                 "Feels like: " + converter.convertTemperature(forecast.getFeelsLike()) + "C" + "\n" +
                 "Humidity: " + forecast.getHumidity() + "\n" +
                 "Pressure: " + forecast.getPressure() + "\n" +
-                "Current time: " + converter.convertTimeZone(forecast.getTimezone());
+                "Current time: " + converter.convertTimeZone(forecast.getTimezone()) + "\n" +
+                "https://openweathermap.org/img/w/" + forecast.getIcon() + ".png";
     }
 }
