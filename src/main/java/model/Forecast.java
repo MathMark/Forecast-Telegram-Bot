@@ -1,8 +1,6 @@
 package model;
 
 import annotations.JsonField;
-
-import java.text.DateFormat;
 import java.util.Objects;
 
 public class Forecast {
@@ -14,24 +12,24 @@ public class Forecast {
     private String cityName;
 
     @JsonField(path = "/main/temp")
-    private int temperature;
+    private Double temperature;
 
     @JsonField(path = "/main/temp_min")
-    private int minTemp;
+    private Double minTemp;
 
     @JsonField(path = "/main/temp_max")
-    private int maxTemp;
+    private Double maxTemp;
 
     @JsonField(path = "/main/humidity")
-    private int humidity;
+    private Integer humidity;
     @JsonField(path = "/main/pressure")
-    private int pressure;
+    private Integer pressure;
 
     @JsonField(path = "/main/feels_like")
-    private int feelsLike;
+    private Double feelsLike;
 
     @JsonField(path = "/timezone")
-    private DateFormat timezone;
+    private Integer timezone;
 
     @JsonField(path = "/weather/0/description")
     private String weatherDescription;
@@ -58,6 +56,22 @@ public class Forecast {
         return Objects.hash(country, cityName, temperature, minTemp, maxTemp, humidity, pressure, feelsLike, timezone, weatherDescription);
     }
 
+    @Override
+    public String toString() {
+        return "Forecast{" +
+                "country='" + country + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", temperature=" + temperature +
+                ", minTemp=" + minTemp +
+                ", maxTemp=" + maxTemp +
+                ", humidity=" + humidity +
+                ", pressure=" + pressure +
+                ", feelsLike=" + feelsLike +
+                ", timezone=" + timezone +
+                ", weatherDescription='" + weatherDescription + '\'' +
+                '}';
+    }
+
     public String getCountry() {
         return country;
     }
@@ -74,27 +88,27 @@ public class Forecast {
         this.cityName = cityName;
     }
 
-    public int getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public int getMinTemp() {
+    public double getMinTemp() {
         return minTemp;
     }
 
-    public void setMinTemp(int minTemp) {
+    public void setMinTemp(double minTemp) {
         this.minTemp = minTemp;
     }
 
-    public int getMaxTemp() {
+    public double getMaxTemp() {
         return maxTemp;
     }
 
-    public void setMaxTemp(int maxTemp) {
+    public void setMaxTemp(double maxTemp) {
         this.maxTemp = maxTemp;
     }
 
@@ -114,19 +128,19 @@ public class Forecast {
         this.pressure = pressure;
     }
 
-    public int getFeelsLike() {
+    public double getFeelsLike() {
         return feelsLike;
     }
 
-    public void setFeelsLike(int feelsLike) {
+    public void setFeelsLike(double feelsLike) {
         this.feelsLike = feelsLike;
     }
 
-    public DateFormat getTimezone() {
+    public Integer getTimezone() {
         return timezone;
     }
 
-    public void setTimezone(DateFormat timezone) {
+    public void setTimezone(Integer timezone) {
         this.timezone = timezone;
     }
 
