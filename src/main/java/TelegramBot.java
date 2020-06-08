@@ -12,7 +12,7 @@ public class TelegramBot {
     public static void main(String[] args){
         Requester requester = new RequesterImpl();
         JSONObject f = requester.getJsonFromURL("https://api.openweathermap.org/data/2.5/weather?q=London&appid=330a370093d85a95a83474ca5483c00c");
-        System.out.println(f.get("name"));
+        System.out.println(f.query("/weather/0"));
 
         /*ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();

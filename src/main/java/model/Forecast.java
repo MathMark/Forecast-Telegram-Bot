@@ -1,18 +1,39 @@
 package model;
 
+import annotations.JsonField;
+
 import java.text.DateFormat;
 import java.util.Objects;
 
 public class Forecast {
+    //main":{"temp":303.35,"feels_like":302.26,"temp_min":301.48,"temp_max":305.37,"pressure":1002,"humidity":38},
+    @JsonField(path = "/sys/country")
     private String country;
+
+    @JsonField(path = "/name")
     private String cityName;
+
+    @JsonField(path = "/main/temp")
     private int temperature;
+
+    @JsonField(path = "/main/temp_min")
     private int minTemp;
+
+    @JsonField(path = "/main/temp_max")
     private int maxTemp;
+
+    @JsonField(path = "/main/humidity")
     private int humidity;
+    @JsonField(path = "/main/pressure")
     private int pressure;
+
+    @JsonField(path = "/main/feels_like")
     private int feelsLike;
+
+    @JsonField(path = "/timezone")
     private DateFormat timezone;
+
+    @JsonField(path = "/weather/0/description")
     private String weatherDescription;
 
     @Override
