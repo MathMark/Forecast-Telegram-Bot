@@ -1,11 +1,8 @@
 package api.mapping;
 
 import annotations.JsonField;
-import api.requester.Requester;
-import api.requester.RequesterImpl;
 import model.Forecast;
 import org.json.JSONObject;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
