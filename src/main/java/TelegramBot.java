@@ -1,7 +1,8 @@
-import bot.CityTimeWeatherBot;
+import bot.CityWeatherBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+
 
 public class TelegramBot {
 
@@ -9,7 +10,7 @@ public class TelegramBot {
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try{
-            telegramBotsApi.registerBot(new CityTimeWeatherBot());
+            telegramBotsApi.registerBot(new CityWeatherBot());
         }catch (TelegramApiException e){
             e.printStackTrace();
         }
