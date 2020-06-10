@@ -1,6 +1,9 @@
 package api.requester;
 
+import api.mapping.MapperImpl;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +13,9 @@ import java.util.Scanner;
 //https://api.openweathermap.org/data/2.5/weather?q=London&appid=330a370093d85a95a83474ca5483c00c
 @Component
 public class RequesterImpl implements Requester{
+
+    private static Logger logger = LoggerFactory.getLogger(RequesterImpl.class);
+
     @Override
     public JSONObject getJsonFromURL(String url){
         return new JSONObject(getDataFromURL(url));
@@ -27,7 +33,7 @@ public class RequesterImpl implements Requester{
                 result.append(input.nextLine());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         return result.toString();
