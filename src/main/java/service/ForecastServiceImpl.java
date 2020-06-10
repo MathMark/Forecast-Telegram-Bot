@@ -1,22 +1,21 @@
 package service;
 
 import api.mapping.Mapper;
-import api.mapping.MapperImpl;
 import api.requester.Requester;
-import api.requester.RequesterImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import presenter.Presenter;
-import presenter.PresenterImpl;
 
+@Component
 public class ForecastServiceImpl implements ForecastService {
+    @Autowired
     private Requester requester;
-    private Mapper mapper;
-    private Presenter presenter;
 
-    public ForecastServiceImpl(){
-        requester = new RequesterImpl();
-        mapper = new MapperImpl();
-        presenter = new PresenterImpl();
-    }
+    @Autowired
+    private Mapper mapper;
+
+    @Autowired
+    private Presenter presenter;
 
     @Override
     public String getForecast(String cityName) {
@@ -24,8 +23,10 @@ public class ForecastServiceImpl implements ForecastService {
         try{
             forecast = presenter.getPresentation(mapper.mapToModel(requester.getJsonFromURL("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=330a370093d85a95a83474ca5483c00c")));
         }catch (Exception e){
-            forecast = "Unknown city";
+            e.printStackTrace();
+            //forecast = "Unknown city";
         }
         return forecast;
     }
+
 }

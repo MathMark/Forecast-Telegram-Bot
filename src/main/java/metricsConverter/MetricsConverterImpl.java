@@ -1,18 +1,17 @@
 package metricsConverter;
 
 import api.requester.Requester;
-import api.requester.RequesterImpl;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MetricsConverterImpl implements MetricsConverter {
     private static int TIME_UNIT = 60;
     private static double TEMP_UNIT = 273.15;
 
+    @Autowired
     private Requester requester;
-
-    public MetricsConverterImpl(){
-        requester = new RequesterImpl();
-    }
 
     @Override
     public double convertTemperature(double temperature) {
@@ -37,5 +36,4 @@ public class MetricsConverterImpl implements MetricsConverter {
 
         return currentHours + ":" + hoursMinutes[1];
     }
-
 }

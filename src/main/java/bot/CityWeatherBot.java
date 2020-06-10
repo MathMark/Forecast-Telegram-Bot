@@ -1,15 +1,16 @@
 package bot;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import service.ForecastService;
-import service.ForecastServiceImpl;
-
 import java.util.ResourceBundle;
 
+@Component
 public class CityWeatherBot extends TelegramLongPollingBot {
 
     private static ResourceBundle resource = ResourceBundle.getBundle("bot");
@@ -17,7 +18,8 @@ public class CityWeatherBot extends TelegramLongPollingBot {
     private static String botUserName = resource.getString("bot.name");
     private static String botToken = resource.getString("bot.token");
 
-    private ForecastService forecastService = new ForecastServiceImpl();
+    @Autowired
+    private ForecastService forecastService;
 
     @Override
     public void onUpdateReceived(Update update) {

@@ -1,12 +1,14 @@
 package api.requester;
 
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 
 //https://api.openweathermap.org/data/2.5/weather?q=London&appid=330a370093d85a95a83474ca5483c00c
+@Component
 public class RequesterImpl implements Requester{
     @Override
     public JSONObject getJsonFromURL(String url){
