@@ -34,6 +34,6 @@ public class MetricsConverterImpl implements MetricsConverter {
             currentHours -= 24;
         }
 
-        return currentHours + ":" + hoursMinutes[1];
+        return currentHours + ":" + hoursMinutes[1] + " (GMT" + (hoursOffset > 0 ? "+" : "–") + Math.abs(hoursOffset) + ")";
     }
 }

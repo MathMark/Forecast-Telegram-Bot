@@ -1,5 +1,7 @@
 package bot;
 
+import bot.replies.Reply;
+import model.Forecast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -21,12 +23,19 @@ public class CityWeatherBot extends TelegramLongPollingBot {
     @Autowired
     private ForecastService forecastService;
 
+    @Autowired
+    private Reply reply;
+
     @Override
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
-            String forecast = forecastService.getForecast(update.getMessage().getText());
-            sendTelegramMessage(update, forecast);
+            Forecast forecast = forecastService.getForecast(update.getMessage().getText());
+            if(forecast != null){
+                sendTelegramMessage(update, reply.sayWeather(forecast));
+            }else{
+                sendTelegramMessage(update, reply.responseNegatively());
+            }
         }
     }
 

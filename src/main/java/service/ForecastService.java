@@ -1,5 +1,7 @@
 package service;
 
+import model.Forecast;
+
 public interface ForecastService {
-    String getForecast(String cityName);
+    Forecast getForecast(String cityName);
 }
