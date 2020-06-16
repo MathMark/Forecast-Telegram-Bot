@@ -38,6 +38,11 @@ public class ReplyEnglish implements Reply {
 
     @Override
     public String offerHelp() {
-        return "How can I help you, mate? " + EmojiParser.parseToUnicode(":stuck_out_tongue_winking_eye:");
+        return "Just enter the name of a city to find out its weather for today " + EmojiParser.parseToUnicode(":stuck_out_tongue_winking_eye:");
+    }
+
+    @Override
+    public String initialReply(){
+        return "Hi there! I am a bot which can predict forecast. Enter the name of a city to find out its weather for today. You can use English or Russian";
     }
 }

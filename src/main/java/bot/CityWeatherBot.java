@@ -18,6 +18,7 @@ public class CityWeatherBot extends TelegramLongPollingBot {
     private static ResourceBundle resource = ResourceBundle.getBundle("bot");
 
     private static String botUserName = resource.getString("bot.name");
+
     private static String botToken = resource.getString("bot.token");
 
     @Autowired
@@ -30,12 +31,25 @@ public class CityWeatherBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
-            Forecast forecast = forecastService.getForecast(update.getMessage().getText());
-            if(forecast != null){
-                sendTelegramMessage(update, reply.sayWeather(forecast));
-            }else{
-                sendTelegramMessage(update, reply.responseNegatively());
+            switch(message.getText()){
+                case "/start":
+                    sendTelegramMessage(update, reply.initialReply());
+                    break;
+                case "/help":
+                    sendTelegramMessage(update, reply.offerHelp());
+                    break;
+                default:
+                    sayForecast(update);
             }
+        }
+    }
+
+    private void sayForecast(Update update){
+        Forecast forecast = forecastService.getForecast(update.getMessage().getText());
+        if(forecast != null){
+            sendTelegramMessage(update, reply.sayWeather(forecast));
+        }else{
+            sendTelegramMessage(update, reply.responseNegatively());
         }
     }
 
